@@ -6,9 +6,15 @@ from evaluation.evaluation import evaluate_model
 from models.ml_models import train_random_forest
 from preprocessing.preprocessing import preprocess_data
 from utils.visualization import (
+    plot_age_distribution,
+    plot_all_graphs_summary,
     plot_career_distribution,
     plot_confusion_matrix,
-    plot_feature_importance,
+    plot_education_counts,
+    plot_interest_frequencies,
+    plot_score_distribution,
+    plot_skill_frequencies,
+    plot_skill_frequencies_horizontal,
 )
 
 
@@ -30,10 +36,16 @@ def main():
     # Check how well the model performs.
     _, _, matrix = evaluate_model(model, X_test, y_test)
 
-    # Show useful charts for the model and data.
-    plot_confusion_matrix(matrix)
-    plot_feature_importance(model, feature_names)
+    # Show and save all notebook charts.
+    plot_age_distribution(data)
+    plot_education_counts(data)
     plot_career_distribution(data)
+    plot_score_distribution(data)
+    plot_skill_frequencies(data)
+    plot_skill_frequencies_horizontal(data)
+    plot_interest_frequencies(data)
+    plot_confusion_matrix(matrix)
+    plot_all_graphs_summary(data, matrix)
 
     # Print a short summary for the user.
     print("ML pipeline completed successfully!")

@@ -1,35 +1,62 @@
 # AI-Based Career Recommendation System
 
+## Student Information
+
+- Student Name: Maizurah Binti Arsad
+- Student ID: BS23110083
+- Course Code: SF35803 Computer Programming 2
+- Session: 2025/2026
+- Semester: 2
+
 ## Project Description
 
-This project is a simple career recommendation system.
-It uses candidate data to predict a suitable career.
-The project is built for learning machine learning in Python.
+This project is a simple machine learning project.
+It recommends careers based on candidate information.
+
+The project uses:
+
+- Age
+- Education
+- Skills
+- Interests
+- Recommendation Score
+
+The model used is `RandomForestClassifier`.
 
 ## What This Project Does
 
-- Loads the career dataset
-- Prepares the data for machine learning
-- Trains a Random Forest model
-- Checks how well the model works
-- Shows charts for results and data
+- Load data
+- Preprocess data
+- Train model
+- Evaluate model
+- Visualize results
 
 ## Workflow Steps
 
-1. Data loading  
-   The project reads the dataset from the `data` folder.
+### Data Loading
 
-2. Preprocessing  
-   The data is cleaned and text values are changed into numbers.
+The project loads the dataset from the `data/` folder.
+The data is read using pandas.
 
-3. Training  
-   A Random Forest model is trained using the prepared data.
+### Preprocessing
 
-4. Evaluation  
-   The model is tested using accuracy, classification report, and confusion matrix.
+The project prepares the data before training.
+Text values are changed into numbers so the model can use them.
 
-5. Visualization  
-   Charts are shown for the confusion matrix, feature importance, and career distribution.
+### Training
+
+The project trains a machine learning model.
+It uses `RandomForestClassifier` to learn from the data.
+
+### Evaluation
+
+The project checks how well the model works.
+It shows accuracy, classification report, and confusion matrix.
+
+### Visualization
+
+The project shows charts for better understanding.
+It shows the confusion matrix, feature importance, and career distribution.
 
 ## Technologies Used
 
@@ -41,7 +68,7 @@ The project is built for learning machine learning in Python.
 
 ## How To Run
 
-Run this command:
+Run this command in the project folder:
 
 ```bash
 python main.py
@@ -49,26 +76,11 @@ python main.py
 
 ## Project Structure
 
-- `data/`  
-  Contains the dataset and data loading code.
-
-- `preprocessing/`  
-  Contains code to prepare the data.
-
-- `models/`  
-  Contains code to train the machine learning model.
-
-- `evaluation/`  
-  Contains code to check model performance.
-
-- `utils/`  
-  Contains chart and visualization code.
-
-- `notebook/`  
-  Contains the original notebook work.
-
-- `tests/`  
-  Contains test files for the project.
-
-- `main.py`  
-  Runs the full project pipeline.
+- `data/` -> dataset and data loader
+- `preprocessing/` -> prepare data
+- `models/` -> train model
+- `evaluation/` -> check performance
+- `utils/` -> visualization
+- `notebooks/` -> original notebook
+- `tests/` -> test files
+- `main.py` -> run everything

@@ -18,16 +18,24 @@
 # %% Cell 2
 import pandas as pd
 import numpy as np
-import matplotlib.pyplot as plt
-import seaborn as sns
 # For preprocessing and modeling
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder, MultiLabelBinarizer
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import classification_report, confusion_matrix
-# Set style for seaborn
-sns.set(style="whitegrid")
+from utils.visualization import (
+    count_items,
+    plot_age_distribution,
+    plot_all_graphs_summary,
+    plot_career_distribution,
+    plot_confusion_matrix,
+    plot_education_counts,
+    plot_interest_frequencies,
+    plot_score_distribution,
+    plot_skill_frequencies,
+    plot_skill_frequencies_horizontal,
+)
 
 # %% Cell 3
 # Load the dataset
@@ -53,48 +61,28 @@ data.describe()
 # > We'll look at the distribution of the `Age` column.
 
 # %% Cell 8
-plt.figure(figsize=(8, 4))
-sns.histplot(data['Age'], bins=15, kde=True, color="skyblue")
-plt.title("Age Distribution")
-plt.xlabel("Age")
-plt.ylabel("Frequency")
-plt.show()
+plot_age_distribution(data)
 
 # %% [markdown] Cell 9
 # ## 3.2 Count of Education Levels
 # > Let's examine how many candidates fall into each education category.
 
 # %% Cell 10
-plt.figure(figsize=(6, 4))
-sns.countplot(x="Education", data=data, palette="Set2")
-plt.title("Education Level Counts")
-plt.xlabel("Education Level")
-plt.ylabel("Count")
-plt.show()
+plot_education_counts(data)
 
 # %% [markdown] Cell 11
 # ## 3.3 Recommended Career Distribution
 # > A count plot for the `Recommended_Career` column to see the frequency of each career recommendation.
 
 # %% Cell 12
-plt.figure(figsize=(10, 6))
-sns.countplot(y="Recommended_Career", data=data, order=data["Recommended_Career"].value_counts().index, palette="Set3")
-plt.title("Distribution of Recommended Careers")
-plt.xlabel("Count")
-plt.ylabel("Recommended Career")
-plt.show()
+plot_career_distribution(data)
 
 # %% [markdown] Cell 13
 # ## 3.4 Recommendation Score Distribution
 # > Visualize the distribution of the `Recommendation_Score`.
 
 # %% Cell 14
-plt.figure(figsize=(8, 4))
-sns.histplot(data['Recommendation_Score'], bins=10, kde=True, color="olive")
-plt.title("Recommendation Score Distribution")
-plt.xlabel("Recommendation Score")
-plt.ylabel("Frequency")
-plt.show()
+plot_score_distribution(data)
 
 # %% [markdown] Cell 15
 # ## 3.5 Skills and Interests Exploration 
@@ -102,11 +90,7 @@ plt.show()
 # > We'll split the strings and count the frequency of each skill and interest.
 
 # %% Cell 16
-# Function to split semicolon-separated values and count occurrences
-def count_items(series):
-    items = series.dropna().apply(lambda x: x.split(";"))
-    flat_list = [item.strip() for sublist in items for item in sublist]
-    return pd.Series(flat_list).value_counts()
+# Function moved to utils/visualization.py
 
 # %% Cell 17
 # Count Skills
@@ -115,23 +99,11 @@ print("Most common skills:\n", skills_count)
 
 # %% Cell 18
 # Plot skills count
-plt.figure(figsize=(10, 4))
-sns.barplot(x=skills_count.index, y=skills_count.values, palette="viridis")
-plt.xticks(rotation=45)
-plt.title("Skill Frequencies")
-plt.xlabel("Skill")
-plt.ylabel("Frequency")
-plt.show()
+plot_skill_frequencies(data)
 
 # %% Cell 19
 # Plot as horizontal bars with more vertical space
-plt.figure(figsize=(18, 14))  # taller figure
-sns.barplot(x=skills_count.values, y=skills_count.index, palette="viridis")
-plt.title("Skill Frequencies")
-plt.xlabel("Frequency")
-plt.ylabel("Skill")
-plt.tight_layout()  # prevents clipping of labels
-plt.show()
+plot_skill_frequencies_horizontal(data)
 
 # %% Cell 20
 # Count Interests
@@ -140,13 +112,7 @@ print("Most common interests:\n", interests_count)
 
 # %% Cell 21
 # Plot interests count as horizontal bars
-plt.figure(figsize=(12, 8))
-sns.barplot(x=interests_count.values, y=interests_count.index, palette="magma")
-plt.title("Interest Frequencies")
-plt.xlabel("Frequency")
-plt.ylabel("Interest")
-plt.tight_layout()
-plt.show()
+plot_interest_frequencies(data)
 
 # %% [markdown] Cell 22
 # # Step 4: Data Preprocessing for Machine Learning
@@ -240,14 +206,8 @@ y_pred = clf.predict(X_test)
 # %% Cell 38
 # Confusion matrix
 cm = confusion_matrix(y_test, y_pred)
-plt.figure(figsize=(10, 8))
-sns.heatmap(cm, annot=True, fmt="d", cmap="Blues",
-            xticklabels=target_encoder.classes_,
-            yticklabels=target_encoder.classes_)
-plt.xlabel("Predicted")
-plt.ylabel("Actual")
-plt.title("Confusion Matrix")
-plt.show()
+plot_confusion_matrix(cm)
+plot_all_graphs_summary(data, cm)
 
 # %% [markdown] Cell 39
 # # Step 6: Summary and Next Steps
@@ -271,4 +231,3 @@ plt.show()
 # [![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/AdilShamim8)  
 # [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/adilshamim8)  
 # [![Twitter](https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://x.com/adil_shamim8)  
-
