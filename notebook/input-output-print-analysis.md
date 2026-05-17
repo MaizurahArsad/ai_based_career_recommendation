@@ -1,6 +1,6 @@
 # Input, Output, and Print Analysis
 
-Source file: `notebook/ai-career-recommendation-eda-ml (2).py`
+Source file: `ai-career-recommendation-eda-ml (2).py`
 
 ## Summary
 
