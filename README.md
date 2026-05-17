@@ -1,4 +1,4 @@
-# AI-Based Career Recommendation System
+# AI-Based Career Recommendation System Using Random Forest
 
 ## Student Information
 
@@ -8,79 +8,173 @@
 - Session: 2025/2026
 - Semester: 2
 
-## Project Description
+## Project Overview
 
-This project is a simple machine learning project.
-It recommends careers based on candidate information.
+This project is an AI-based career recommendation system.
+It uses candidate information such as age, education, skills, interests, and recommendation score to predict a suitable career path.
 
-The project uses:
+The main purpose of this project is to show a simple machine learning workflow in Python.
+It demonstrates how data can be loaded, prepared, used to train a model, evaluated, and visualized in a clear academic project format.
 
-- Age
-- Education
-- Skills
-- Interests
-- Recommendation Score
+## Project Purpose
 
-The model used is `RandomForestClassifier`.
+This project was built to:
 
-## What This Project Does
+- explore a career recommendation dataset
+- prepare the data for machine learning
+- train a classification model
+- predict recommended careers
+- show results in both terminal tables and charts
 
-- Load data
-- Preprocess data
-- Train model
-- Evaluate model
-- Visualize results
+## Dataset Columns
 
-## Workflow Steps
+The dataset used in this project contains these main columns:
 
-### Data Loading
+- `CandidateID`: unique ID for each candidate
+- `Name`: candidate name
+- `Age`: candidate age
+- `Education`: education level of the candidate
+- `Skills`: skills listed for the candidate
+- `Interests`: interests listed for the candidate
+- `Recommended_Career`: target career label to predict
+- `Recommendation_Score`: score related to the recommendation
 
-The project loads the dataset from the `data/` folder.
-The data is read using pandas.
+## Machine Learning Pipeline
 
-### Preprocessing
+The project follows this simple pipeline:
 
-The project prepares the data before training.
-Text values are changed into numbers so the model can use them.
+1. Load the dataset from the `data/` folder.
+2. Preprocess the data by selecting important columns and encoding text values.
+3. Train a `RandomForestClassifier` model.
+4. Evaluate the model using accuracy, classification report, and confusion matrix.
+5. Generate visualizations for better understanding of the dataset and model results.
 
-### Training
+## Terminal Outputs
 
-The project trains a machine learning model.
-It uses `RandomForestClassifier` to learn from the data.
+When you run `python main.py`, the script prints notebook-style terminal tables so the project is easy to present without Jupyter Notebook.
 
-### Evaluation
+The terminal output includes:
 
-The project checks how well the model works.
-It shows accuracy, classification report, and confusion matrix.
+- dataset preview
+- dataset shape
+- dataset info
+- datatype summary
+- dataset description
+- missing values table
+- education counts
+- recommended career counts
+- most common skills
+- most common interests
+- processed feature preview
+- feature matrix shape
+- feature column names
+- target preview
+- model evaluation results
 
-### Visualization
+## Visual Output Charts
 
-The project shows charts for better understanding.
-It shows the confusion matrix, feature importance, and career distribution.
+The project also generates and saves charts in `outputs/ai_career_plots/`.
 
-## Technologies Used
+These charts include:
 
-- Python
-- pandas
-- scikit-learn
-- matplotlib
-- seaborn
+- age distribution
+- education level counts
+- recommended career distribution
+- recommendation score distribution
+- skill frequency chart
+- horizontal skill frequency chart
+- interest frequency chart
+- confusion matrix heatmap
+- combined summary chart
 
-## How To Run
+## Why Terminal Tables Are Used
 
-Run this command in the project folder:
+This version of the project runs as a normal Python script, not as a Kaggle Notebook or Jupyter Notebook.
+Because of that, table-style terminal output is used to show dataframe summaries in a clear and readable way inside the IntelliJ terminal.
+
+## Project Folder Structure
+
+```text
+ai_based_career_recommendation/
+|-- data/
+|   |-- AI-based Career Recommendation System (2).csv
+|   `-- data_loader.py
+|-- evaluation/
+|   `-- evaluation.py
+|-- models/
+|   |-- deep_learning.py
+|   `-- ml_models.py
+|-- notebook/
+|   `-- input-output-print-analysis.md
+|-- outputs/
+|   `-- ai_career_plots/
+|-- preprocessing/
+|   `-- preprocessing.py
+|-- tests/
+|   |-- test_data_loader.py
+|   |-- test_evaluation.py
+|   |-- test_ml_models.py
+|   `-- test_preprocessing.py
+|-- utils/
+|   `-- visualization.py
+|-- ai-career-recommendation-eda-ml (2).py
+|-- main.py
+|-- README.md
+`-- requirements.txt
+```
+
+## Setup Instructions
+
+### 1. Clone the repository
+
+```bash
+git clone <your-repository-url>
+cd ai_based_career_recommendation
+```
+
+### 2. Create a virtual environment
+
+```bash
+python -m venv .venv
+```
+
+### 3. Activate the virtual environment
+
+Windows PowerShell:
+
+```powershell
+.venv\Scripts\Activate.ps1
+```
+
+Windows Command Prompt:
+
+```bat
+.venv\Scripts\activate
+```
+
+### 4. Install the required libraries
+
+```bash
+pip install -r requirements.txt
+```
+
+### 5. Run the project
 
 ```bash
 python main.py
 ```
 
-## Project Structure
+## Main Technologies Used
 
-- `data/` -> dataset and data loader
-- `preprocessing/` -> prepare data
-- `models/` -> train model
-- `evaluation/` -> check performance
-- `utils/` -> visualization
-- `notebooks/` -> original notebook
-- `tests/` -> test files
-- `main.py` -> run everything
+- Python
+- pandas
+- numpy
+- scikit-learn
+- matplotlib
+- seaborn
+- tabulate
+
+## Submission Note
+
+This repository is prepared as a script-based academic submission.
+The machine learning flow, terminal outputs, and saved visualizations are all designed to run directly from `main.py`.

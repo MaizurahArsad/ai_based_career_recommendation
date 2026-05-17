@@ -16,14 +16,22 @@
 # ## Step 1: Import Libraries and Load Data
 
 # %% Cell 2
+# pandas is used to load and inspect tabular data.
 import pandas as pd
+# numpy is used for general numerical work.
 import numpy as np
-# For preprocessing and modeling
+# train_test_split is used to divide the data into training and testing sets.
 from sklearn.model_selection import train_test_split
+# LabelEncoder converts text labels into numbers.
+# MultiLabelBinarizer can convert multiple labels into binary columns.
 from sklearn.preprocessing import LabelEncoder, MultiLabelBinarizer
+# CountVectorizer can convert text into numeric token counts.
 from sklearn.feature_extraction.text import CountVectorizer
+# RandomForestClassifier is the machine learning model used in this notebook.
 from sklearn.ensemble import RandomForestClassifier
+# classification_report and confusion_matrix are used to evaluate the model.
 from sklearn.metrics import classification_report, confusion_matrix
+# These plotting helpers create the visual charts used in the notebook.
 from utils.visualization import (
     count_items,
     plot_age_distribution,
@@ -38,8 +46,9 @@ from utils.visualization import (
 )
 
 # %% Cell 3
-# Load the dataset
+# Load the dataset into a pandas DataFrame.
 data = pd.read_csv("/kaggle/input/ai-based-career-recommendation-system/AI-based Career Recommendation System.csv")
+# Show the first few rows to preview the dataset.
 data.head()
 
 # %% [markdown] Cell 4
