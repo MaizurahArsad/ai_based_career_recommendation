@@ -4,7 +4,7 @@
 
 - Student Name: Maizurah Binti Arsad
 - Student ID: BS23110083
-- Course Code: SF35803 Computer Programming 2
+- Course Code: SF35803 Computer Programming 
 - Session: 2025/2026
 - Semester: 2
 
